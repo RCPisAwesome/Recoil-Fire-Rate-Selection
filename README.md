@@ -6,6 +6,7 @@ https://www.youtube.com/watch?v=GuHbcV-_RvI
 
 # Features:
 - UI show based on if the Weapon is Semi and Fully automatic
+- Press left ALT to click the UI buttons
 - If Statements can be uncommented to add gun specific values
 - Uncomment "IsControlPressed" part and delete these lines in StopWeaponSwitching() if you want to switch weapon without manually pressing the SAFE ui button
 - The weapon wheel, rolling and tab keyboard button are disabled when SAFE is not selected
