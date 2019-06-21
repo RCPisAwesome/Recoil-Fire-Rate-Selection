@@ -1,0 +1,77 @@
+<html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(function() {
+			window.addEventListener('message', function(event) {
+				$("body").css('display', event.data.ShowSemiUI ? "block" : "none")
+		        $(".BURST").css('display', event.data.ShowAutoUI ? "initial" : "none")
+				$(".AUTO").css('display', event.data.ShowAutoUI ? "initial" : "none")
+		        
+		        if(event.data.switchtosafe){
+					$('.SAFE').click();
+		        }
+			})
+			$(window).keydown(function(e){
+				if(e.which == 8 || e.which == 87 || e.which == 32 || e.which == 83 || e.which == 27 || e.which == 65 || e.which == 68){ /*keys: backspace,W,spacebar,S,escape,A,D*/
+					$.post('http://weaponshop/close', JSON.stringify({}));
+				}
+			})
+			$('.SAFE').click(function(){
+				$.post('http://weaponrecoil/SAFE', JSON.stringify({SAFE: $(this).attr('id')}));
+			})
+			$('.SEMI').click(function(){
+				$.post('http://weaponrecoil/SEMI', JSON.stringify({SEMI: $(this).attr('id')}));
+			})
+			$('.BURST').click(function(){
+				$.post('http://weaponrecoil/BURST', JSON.stringify({BURST: $(this).attr('id')}));
+			})
+			$('.AUTO').click(function(){
+				$.post('http://weaponrecoil/AUTO', JSON.stringify({AUTO: $(this).attr('id')}));
+			})
+		})
+	</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+	$(function() {$("button").button()});
+</script>
+<script>
+function selectedButton(CountUpAngle) {
+    document.getElementById("SWITCH").style.transform = "rotate("+CountUpAngle+"deg)";
+}
+</script>
+<style>
+::-webkit-scrollbar { 
+    display: none;
+}
+.SAFE,.SEMI,.BURST,.AUTO {
+	background: rgb(30,30,30);
+	color: rgb(255,255,255);
+	font-size: 1.2vw;
+}
+.SAFE{top: 84%; left: 76%;}
+.SEMI{top: 78%; left: 76%;}
+.BURST{top: 79%; left: 76%;}
+.AUTO{top: 84%; left: 69%;}
+
+img#SWITCH {
+	top: 83.2%;
+    left: 77.4%;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    width:14%;
+  	height:7%;
+}
+</style>
+</head>
+<body>
+<button id="SAFE" class="SAFE" onclick='selectedButton(1)'>SAFE</button>
+<button id="SEMI" class="SEMI" onclick='selectedButton(90)'>SEMI</button>
+<button id="BURST" class="BURST" onclick='selectedButton(150)'>BURST</button>
+<button id="AUTO" class="AUTO" onclick='selectedButton(180)'>AUTO</button>
+<img id="SWITCH" src="needle.png" unselectable="on">
+
+</body>
+</html>
