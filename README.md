@@ -1,3 +1,5 @@
+# This Script is Outdated and Poorly Coded, Please Don't Use It
+
 # Weapon Recoil & Fire Rate Selection
 Realistic FiveM Weapon Recoil and Fire Rate Selection UI
 
